@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:36:46 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/12/02 20:00:54 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/12/13 20:38:04 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,11 @@
 
 void	no_cap(int count, char **argv)
 {
-	while ()
+	while (count > 1 && count)
+	{
+		if (argv == argv + 1)
+			exit(0);
+		argv++;
+		count++;
+	}
 }
