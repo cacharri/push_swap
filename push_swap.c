@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/12/13 20:46:22 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/12/14 20:34:36 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		no_cap(argc, argv);
-		while (*argv)
+		while (argv[i])
 		{
-			pv = ft_split(*argv, ' ');
+			pv = ft_split(argv[i], ' ');
+			printf("esto es %s", pv);
 			z = ft_atoi((const char *)pv);
 			printf("esto es %d", z);
-			a = ft_lstnew(z);
+			a = ft_lstnew((void *) z);
 			i++;
 		}
 	}
