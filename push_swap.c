@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/12/14 20:34:36 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/12/15 20:14:23 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int	main(int argc, char **argv)
 {
-	t_list	*a;
-	t_list	*b;
+	//t_list	*a;
+//	t_list	*b;
 	int		i;
 	int		z;
 	char	**pv;
 
+//	a = malloc(sizeof(t_list));
+//	b = malloc(sizeof(t_list));
 	i = 1;
-
 	if (argc <= 1)
 		exit(0);
 	if (argc > 1)
