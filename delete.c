@@ -1,43 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   delete.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/12/16 17:00:56 by ialvarez         ###   ########.fr       */
+/*   Created: 2021/12/16 19:44:50 by ialvarez          #+#    #+#             */
+/*   Updated: 2021/12/16 20:10:20 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	delete_stack(t_stack *from)
 {
-	//t_list	*a;
-//	t_list	*b;
-	int		i;
-	int		z;
-	char	**pv;
-
-//	a = malloc(sizeof(t_list));
-//	b = malloc(sizeof(t_list));
-	i = 1;
-	if (argc <= 1)
-		exit(0);
-	if (argc > 1)
+	if (from == from->next)
+		from = NULL;
+	else
 	{
-		no_cap(argc, argv);
-		while (argv[i])
-		{
-			pv = ft_split(argv[i], ' ');
-			printf("esto es %s", pv);
-			z = ft_atoi((const char *)pv);
-			printf("esto es %d", z);
-			a = ft_lstnew((void *) z);
-			i++;
-		}
+		from->pre->next = from->next;
+		from->next->pre = from->pre;
+		from = from->next;
 	}
-
-	return (0);
 }
