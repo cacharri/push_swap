@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:48:24 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/12/16 20:10:25 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/12/17 20:14:00 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 # include	"libft/libft.h"
 
 void	no_cap(int count, char **argv);
+void		push_to_other_list(t_stack *from, t_stack *to);
+void		first_end(t_stack *list);
+
 
 typedef struct s_stack
 {

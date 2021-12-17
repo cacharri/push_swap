@@ -6,13 +6,13 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:44:50 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/12/16 20:32:24 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/12/17 20:18:08 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	delete_stack(t_stack *from)
+static void	delete_stack(t_stack *from)
 {
 	if (from == from->next)
 		from = NULL;
@@ -33,4 +33,24 @@ void	push_to_other_list(t_stack *from, t_stack *to)
 		return;
 	save = from;
 	delete_stack(from);
+	if (to)
+	{
+		tock = to->pre;
+		to->pre = save;
+		to->pre->next = to;
+		to->pre->pre = tock;
+		to->pre->pre->next = save;
+		to = to->pre;
+	}
+	else
+	{
+		to = save;
+		to->next = to;
+		to->pre = to;
+	}
+}
+
+void	first_end(t_stack *list)
+{
+	list = list->next;
 }
