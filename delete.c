@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:44:50 by ialvarez          #+#    #+#             */
-/*   Updated: 2021/12/17 20:18:08 by ialvarez         ###   ########.fr       */
+/*   Updated: 2021/12/22 21:49:17 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,14 @@ void	push_to_other_list(t_stack *from, t_stack *to)
 	}
 }
 
-void	first_end(t_stack *list)
+void	r_act(t_stack *list)
 {
 	list = list->next;
 }
+
+void	rr_act(t_stack *list)
+{
+	list = list->pre;
+}
+
+
