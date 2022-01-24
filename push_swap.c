@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/01/19 19:43:09 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/01/24 21:07:39 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,30 +82,26 @@ int		main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 	int		i;
+	int		p;
 	char	**pv;
 
-//	a = malloc(sizeof(t_list));
-//	b = malloc(sizeof(t_list));
 	i = 1;
 	if (argc <= 1)
 		exit(0);
 	if (argc > 1)
 	{
-		a = NULL;
-		b = NULL;
+		a = init(argv);
+		b = init(argv);
 		keep_data(++argv, &a);
-		//no_cap(argc, argv);
-		/*while (argv[i])
+		p = is_sorted(a);
+		if (p == 1)
+			exit (0);
+		else if (p == 0)
 		{
-			pv = ft_split(argv[i], ' ');
-			printf("esto es %s", pv);
-			z = ft_atoi((const char *)pv);
-			printf("esto es %d", z);
-			a = ft_lstnew((void *) z);
-			i++;
-		}
+		/*
+		//no_cap(argc, argv);
 		*/
+		}
 	}
-
 	return (0);
 }

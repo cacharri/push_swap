@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   no_repeat.c                                        :+:      :+:    :+:   */
+/*   sorted.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 19:36:46 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/01/24 21:05:00 by ialvarez         ###   ########.fr       */
+/*   Created: 2022/01/24 18:04:52 by ialvarez          #+#    #+#             */
+/*   Updated: 2022/01/24 21:07:33 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	no_cap(int count, char **argv)
+int is_sorted(t_stack *a, char **argv)
 {
 	int i;
+	int p;
 	int size;
 
 	i = 1;
 	size = ft_strlen((char *)argv);
-	while (count > 1 && count)
+	while (i < size)
 	{
-		if (argv[i] != ft_isdigit(argv[i]))
-			exit (0);
-		if ()
-		if (argv[i] < -2147483648 || argv[i] > 2147483647)
-			exit (0);
-		if (argv == argv + 1)
-			exit(0);
+		if (a->num > a->next->num)
+		{
+			p = 0;
+			break ;
+		}
+		else
+			p = 1;
+		a = a->next;
 		i++;
-		count++;
 	}
+	a = a->next;
+	return (p);
 }
