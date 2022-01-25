@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:48:24 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/01/24 21:07:35 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/01/25 20:23:00 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 # include	<stdlib.h>
 # include	"libft/libft.h"
 
-void	no_cap(int count, char **argv);
+void	no_cap(int count, char **argv, int si);
 void	push_to_other_list(t_stack *from, t_stack *to);		//pa
 void	r_act(t_stack *list);								//ra
 void	rr_act(t_stack *list);								//rra
-int		is_sorted(t_stack *a, char **argv);
+int		is_sorted(t_stack *a, char **argv, int si);
 
 typedef struct s_stack
 {

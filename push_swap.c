@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/01/24 21:07:39 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/01/25 20:22:58 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,15 +77,27 @@ void	keep_data(char **argv, t_stack **a)
 	}
 }
 
+static	int	size(int argc)
+{
+	int i;
+
+	i = -1;
+	while(argc)
+		i++;
+	return (i);
+}
+
 int		main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
 	int		i;
 	int		p;
+	int		si;
 	char	**pv;
 
 	i = 1;
+	si = size(argc);
 	if (argc <= 1)
 		exit(0);
 	if (argc > 1)
