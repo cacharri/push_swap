@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 14:29:00 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/01/24 21:07:37 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/01/26 22:02:29 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,78 @@ t_stack *init(char **da)
 	node = node->next;
 	node->pre = last;
 	return (node);
+}
+
+void positive_sort(t_stack *a, t_stack *b, t_save *save, int num)
+{
+	int j;
+
+	j = 1;
+	while (j++ <= num)
+	{
+		if ((a->num >> save->i) & 1)
+		{
+			push_to_other_list(a, b);
+			r_act(b);
+			write(1, "pb rb", 6);
+			save->j++;
+		}
+		else
+		{
+			r_act(a);
+			write(1, "ra", 3);
+		}
+	}
+	j = 0;
+	if (b != NULL)
+	{
+		while (j < save->j)
+		{
+			push_to_other_list(b, a);
+			write(1, "pa", 3);
+		}
+	}
+}
+
+void negative_sort(t_stack *a, t_stack *b, t_save *save, int num)
+{
+	int j;
+
+	j = 1;
+	while (j++ <= num)
+	{
+		if ((a->num >> 31) & 1)
+		{
+			push_to_other_list(a, b);
+			write(1, "pb", 3);
+			save->j++;
+		}
+		else
+		{
+			r_act(a);
+			write(1, "ra", 3);
+		}
+	}
+	j = 0;
+	if (b != NULL)
+	{
+		while (j < save->j)
+		{
+			push_to_other_list(b, a);
+			write(1, "pa", 3);
+		}
+	}
+}
+
+void radix_sort(t_stack *a, t_stack *b, t_save *save, int num)
+{
+	save->i = 0;
+	while (save->i++ << 31)
+	{
+		save->j = 0;
+		positive_sort(a, b, save, num);
+	}
+	save->j = 0;
+	negative_sort(a, b, save, num);
+	write(1, "rb\n", 3);
 }

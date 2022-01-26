@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/01/25 20:22:58 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/01/26 22:02:27 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ static	void	ft_add_back(t_stack **lst, t_stack *new)
 	}
 }
 
-void	keep_data(char **argv, t_stack **a)
+static void	keep_data(char **argv, t_stack **a)
 {
-	char	**take;
+	char	**tak;
 	t_stack	*aux;
 	int		i;
 	int		o;
@@ -62,17 +62,17 @@ void	keep_data(char **argv, t_stack **a)
 	{
 		if (**argv != ' ')
 		{
-			take = ft_split(*argv, ' ');
-			while (take[i++])
+			tak = ft_split(*argv, ' ');
+			while (tak[i++])
 			{
-				if (ft_atoi(take[i]) < -214783648 || ft_atoi(take[i]) > 2147483647)
+				if (ft_atoi(tak[i]) < -214783648 || ft_atoi(tak[i]) > 2147483647)
 					exit (0);
-				o = ft_atoi(take[i]);
+				o = ft_atoi(tak[i]);
 				aux = ft_new(o);
 				ft_add_back(a, aux);
-				free(take[i]);
+				free(tak[i]);
 			}
-			free(take);
+			free(tak);
 		}
 	}
 }
@@ -91,16 +91,14 @@ int		main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	int		i;
 	int		p;
 	int		si;
 	char	**pv;
 
-	i = 1;
 	si = size(argc);
 	if (argc <= 1)
 		exit(0);
-	if (argc > 1)
+	else if (argc > 1)
 	{
 		a = init(argv);
 		b = init(argv);
@@ -110,9 +108,10 @@ int		main(int argc, char **argv)
 			exit (0);
 		else if (p == 0)
 		{
-		/*
-		//no_cap(argc, argv);
-		*/
+		//	if (big sort)
+		//	radix sort
+		//	if (small sort)
+		//	radixmin
 		}
 	}
 	return (0);
