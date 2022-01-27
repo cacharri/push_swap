@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:36:46 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/01/26 19:56:04 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/01/27 16:54:54 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ void	no_cap(int count, char **argv, int si)
 	i = 1;
 	while (count > 1 && count)
 	{
-		if (argv[i] != ft_isdigit(argv[i]))
+		if (ft_atoi(argv[i]) != ft_isdigit(ft_atoi(argv[i])))
 			exit (0);
-		if ()
 		if (argv[i] < -2147483648 || argv[i] > 2147483647)
 			exit (0);
 		if (argv == argv + 1)

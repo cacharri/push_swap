@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/01/26 22:02:27 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/01/27 21:02:41 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,23 +50,28 @@ static	void	ft_add_back(t_stack **lst, t_stack *new)
 	}
 }
 
-static void	keep_data(char **argv, t_stack **a)
+static void	keep_data(int argc, char *argv, char **tak)
 {
-	char	**tak;
 	t_stack	*aux;
 	int		i;
 	int		o;
+	int u;
 
 	i = 0;
-	while (*argv)
+	u = 1;
+	while (u++ < argc)
 	{
-		if (**argv != ' ')
+		if (argv != NULL)
 		{
-			tak = ft_split(*argv, ' ');
+			tak = ft_split(argv, ' ');
 			while (tak[i++])
 			{
-				if (ft_atoi(tak[i]) < -214783648 || ft_atoi(tak[i]) > 2147483647)
-					exit (0);
+				if (!((tak[i] >= '0' && tak[i] <= '9') || 
+						(tak[i] == '-' && (tak[i + 1] <= '9' && tak[i + 1] >= '0')) || 
+						(tak[i] == '+' && (tak[i + 1] <= '9' && tak[i + 1] >= '0'))))
+						ft_error(tak);
+				//if (ft_atoi(tak[i]) < -214783648 || ft_atoi(tak[i]) > 2147483647)
+				//	exit (0);
 				o = ft_atoi(tak[i]);
 				aux = ft_new(o);
 				ft_add_back(a, aux);
@@ -87,23 +92,42 @@ static	int	size(int argc)
 	return (i);
 }
 
+void	ft_error(char **a)
+{
+	write(1, "Error\n", 6);
+	free(a);
+	exit (0);
+}
+
+static void parseo(char **argv)
+{
+	char **take;
+
+	while(*argv)
+	{
+		if ()
+
+	}
+}
+
 int		main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
+	char	**tak;
 	int		p;
 	int		si;
-	char	**pv;
 
-	si = size(argc);
+	b = NULL;
 	if (argc <= 1)
 		exit(0);
 	else if (argc > 1)
 	{
+		parseo(argv);
 		a = init(argv);
-		b = init(argv);
-		keep_data(++argv, &a);
-		p = is_sorted(a);
+		keep_data(argc, ++argv, tak);
+		si = ft_strlen((char *)a);
+		p = is_sorted(a, argv, si);
 		if (p == 1)
 			exit (0);
 		else if (p == 0)
