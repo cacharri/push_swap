@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 14:29:00 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/01/28 20:19:51 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/01/28 21:24:04 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ t_stack *init(char **da)
 	t_stack	*first;
 	t_stack	*node;
 
+	last = NULL;
+	first = NULL;
 	node = malloc(sizeof(t_stack));
 	if (!node)
 		return NULL;
@@ -111,8 +113,11 @@ void negative_sort(t_stack *a, t_stack *b, t_save *save, int num)
 	}
 }
 
-void radix_sort(t_stack *a, t_stack *b, t_save *save, int num)
+void radix_sort(t_stack *a, t_stack *b, int num)
 {
+	t_save *save;
+
+	save = NULL;
 	save->i = 0;
 	while (save->i++ << 31)
 	{

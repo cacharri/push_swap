@@ -6,13 +6,13 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 18:04:52 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/01/26 20:17:28 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/01/28 20:57:51 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int is_sorted(t_stack *a, char **argv, int si)
+int is_sorted(t_stack *a, int si)
 {
 	int i;
 	int p;

@@ -6,12 +6,12 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/01/28 20:19:49 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/01/28 21:24:03 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
 static	t_stack	*ft_new(int content)
 {
 	t_stack	*other;
@@ -49,32 +49,29 @@ static	void	ft_add_back(t_stack **lst, t_stack *new)
 		rte->next = new;
 	}
 }
-
-static void	keep_data(int argc, char **argv, char **tak)
+*/
+static void	keep_data(int argc, char **argv, char ***tak)
 {
-	t_stack	*aux;
 	int		i;
 	int		j;
-	int		o;
 	int u;
 
-	i = 0;
+	i = 1;
 	u = 1;
 	j = 0;
 	while (u++ < argc)
 	{
 		if (argv != NULL)
 		{
-			tak = ft_split((char *)argv, ' ');
+			*tak = ft_split((char *)argv, ' ');
 			while (tak[i][j++])
 			{
-				if (!((tak[i][j] >= '0' && tak[i][ j] <= '9') || 
-						(tak[i][j] == '-' && (tak[i][j + 1] <= '9' && tak[i][j + 1] >= '0')) || 
-						(tak[i][j] == '+' && (tak[i][j + 1] <= '9' && tak[i][j + 1] >= '0'))))
-						ft_error(tak);
+				if (!((*tak[i][j] >= '0' && *tak[i][ j] <= '9') || 
+						(*tak[i][j] == '-' && (*tak[i][j + 1] <= '9' && *tak[i][j + 1] >= '0')) || 
+						(*tak[i][j] == '+' && (*tak[i][j + 1] <= '9' && *tak[i][j + 1] >= '0'))))
+						ft_error(*tak);
 			}
 			i++;
-			free(tak);
 		}
 	}
 }
@@ -95,19 +92,23 @@ int		main(int argc, char **argv)
 	int		si;
 
 	b = NULL;
+	tak = NULL;
 	if (argc <= 1)
 		exit(0);
 	else if (argc > 1)
 	{
-		keep_data(argc, ++argv, tak);
+		keep_data(argc, ++argv, &tak);
 		si = ft_strlen((char *)tak);
 		a = init(tak);
-		p = is_sorted(a, argv, si);
+		p = is_sorted(a, si);
 		if (p == 1)
 			exit (0);
 		else if (p == 0)
 		{
-			if ()
+			if (argc > 100)
+				radix_sort(a, b, a->num);
+			else
+				exit (0);
 		//	if (big sort)
 		//	radix sort
 		//	if (small sort)
