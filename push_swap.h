@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:48:24 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/01/27 20:31:01 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/01/28 20:18:14 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_save
 	int j;
 }					t_save;
 
-//void	no_cap(int count, char **argv, int si);
 void	push_to_other_list(t_stack *from, t_stack *to);		//pa
 void	r_act(t_stack *list);								//ra
 void	rr_act(t_stack *list);								//rra

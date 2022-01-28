@@ -6,10 +6,10 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 19:36:46 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/01/27 16:54:54 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/01/28 20:18:01 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+/*
 #include "push_swap.h"
 
 void	no_cap(int count, char **argv, int si)
@@ -28,4 +28,4 @@ void	no_cap(int count, char **argv, int si)
 		i++;
 		count++;
 	}
-}
+}*/
