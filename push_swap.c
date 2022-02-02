@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/02 06:44:27 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/02 21:13:32 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static	void	ft_add_back(t_stack **lst, t_stack *new)
 }
 */
 
-static void parseo(char *argv)
+static int parseo(char *argv)
 {
 	long num = 0;
 
@@ -66,16 +66,21 @@ static void parseo(char *argv)
 		num = ft_atoi(argv);
 	if (num > 2147483647 || num < -2147483648)
 		write (1, "Error", 6);
+	return (num);
 }
-static void	keep_data(char *argv, char **tak)
+static void	keep_data(char *argv, t_stack **a)
 {
 	int		i;
+	char **tak;
+	long num;
 
 	tak = ft_split(argv, ' ');
 	i = 0;
+	printf("hola");
 	while (tak[i] != NULL)
 	{
-		parseo(tak[i]);
+		num = parseo(tak[i]);
+		*a = init(tak);
 		/*if (!((ft_atoi(tak[i]) >= '0' && ft_atoi(tak[i]) <= '9') || 
 				(ft_atoi(tak[i]) == '-' && (ft_atoi(tak[i + 1]) <= '9' && ft_atoi(tak[i + 1]) >= '0')) || 
 				(ft_atoi(tak[i]) == '+' && (ft_atoi(tak[i + 1]) <= '9' && ft_atoi(tak[i + 1]) >= '0'))))
@@ -84,8 +89,10 @@ static void	keep_data(char *argv, char **tak)
 			printf("asadsad\n");
 			exit(0);
 		}*/
+		free(tak[i]);
 		i++;
 	}
+	free(tak);
 }
 
 void	ft_error(char ***a)
@@ -99,9 +106,9 @@ int		main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	char	*tak;
+	//char	*tak;
 	int		p;
-	int		si;
+	//int		si = 0;
 	int		i = 1;
 
 	if (argc <= 1)
@@ -110,14 +117,20 @@ int		main(int argc, char **argv)
 	{
 		a = NULL;
 		b = NULL;
-		tak = NULL;
-		while(i++ < argc)
-			keep_data(argv[i], &tak);
-		printf("buu\n");
-		si = ft_strlen(tak);
+	//	tak = NULL;
+		printf("lool");
+		while(i < argc)
+		{
+			keep_data(argv[i], &a);
 
-		a = init(&tak);
-		p = is_sorted(a, si);
+			i++;
+		}
+		//si = ft_strlen(tak);
+
+		//a = init(&a);
+		//free(tak);
+		p = 0; 
+		//	is_sorted(a, si);
 		if (p == 1)
 			exit (0);
 		else if (p == 0)

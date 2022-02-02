@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 14:29:00 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/02 03:16:52 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/02 21:13:34 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void other_nodes(char **da, t_stack *first, t_stack *last, t_stack *node)
 		last = node;
 		node = node->next;
 		node->pre = last;
+		i++;
 	}
 }
 
@@ -79,6 +80,7 @@ void positive_sort(t_stack *a, t_stack *b, t_save *save, int num)
 		{
 			push_to_other_list(b, a);
 			write(1, "pa", 3);
+			j++;
 		}
 	}
 }
@@ -109,6 +111,7 @@ void negative_sort(t_stack *a, t_stack *b, t_save *save, int num)
 		{
 			push_to_other_list(b, a);
 			write(1, "pa", 3);
+			j++;
 		}
 	}
 }
