@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/01/28 21:24:03 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/02 06:44:27 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,33 +50,45 @@ static	void	ft_add_back(t_stack **lst, t_stack *new)
 	}
 }
 */
-static void	keep_data(int argc, char **argv, char ***tak)
+
+static void parseo(char *argv)
+{
+	long num = 0;
+
+	if(!ft_atoi(argv) && argv[0] != '0')
+	{
+		if((argv[0] == '+' || argv[0] == '-') && argv[1] == '0')
+			num = ft_atoi(argv);
+		else
+			write(1, "Error\n", 6);
+	}
+	else
+		num = ft_atoi(argv);
+	if (num > 2147483647 || num < -2147483648)
+		write (1, "Error", 6);
+}
+static void	keep_data(char *argv, char **tak)
 {
 	int		i;
-	int		j;
-	int u;
 
-	i = 1;
-	u = 1;
-	j = 0;
-	while (u++ < argc)
+	tak = ft_split(argv, ' ');
+	i = 0;
+	while (tak[i] != NULL)
 	{
-		if (argv != NULL)
+		parseo(tak[i]);
+		/*if (!((ft_atoi(tak[i]) >= '0' && ft_atoi(tak[i]) <= '9') || 
+				(ft_atoi(tak[i]) == '-' && (ft_atoi(tak[i + 1]) <= '9' && ft_atoi(tak[i + 1]) >= '0')) || 
+				(ft_atoi(tak[i]) == '+' && (ft_atoi(tak[i + 1]) <= '9' && ft_atoi(tak[i + 1]) >= '0'))))
 		{
-			*tak = ft_split((char *)argv, ' ');
-			while (tak[i][j++])
-			{
-				if (!((*tak[i][j] >= '0' && *tak[i][ j] <= '9') || 
-						(*tak[i][j] == '-' && (*tak[i][j + 1] <= '9' && *tak[i][j + 1] >= '0')) || 
-						(*tak[i][j] == '+' && (*tak[i][j + 1] <= '9' && *tak[i][j + 1] >= '0'))))
-						ft_error(*tak);
-			}
-			i++;
-		}
+			//ft_error(tak);
+			printf("asadsad\n");
+			exit(0);
+		}*/
+		i++;
 	}
 }
 
-void	ft_error(char **a)
+void	ft_error(char ***a)
 {
 	write(1, "Error\n", 6);
 	free(a);
@@ -87,26 +99,33 @@ int		main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	char	**tak;
+	char	*tak;
 	int		p;
 	int		si;
+	int		i = 1;
 
-	b = NULL;
-	tak = NULL;
 	if (argc <= 1)
-		exit(0);
-	else if (argc > 1)
+		return (0);
+	else
 	{
-		keep_data(argc, ++argv, &tak);
-		si = ft_strlen((char *)tak);
-		a = init(tak);
+		a = NULL;
+		b = NULL;
+		tak = NULL;
+		while(i++ < argc)
+			keep_data(argv[i], &tak);
+		printf("buu\n");
+		si = ft_strlen(tak);
+
+		a = init(&tak);
 		p = is_sorted(a, si);
 		if (p == 1)
 			exit (0);
 		else if (p == 0)
 		{
 			if (argc > 100)
+			{
 				radix_sort(a, b, a->num);
+			}
 			else
 				exit (0);
 		//	if (big sort)
