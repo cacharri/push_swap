@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/02 21:13:32 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/03 18:47:59 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,11 @@ static int parseo(char *argv)
 		write (1, "Error", 6);
 	return (num);
 }
-static void	keep_data(char *argv, t_stack **a)
+static char		**keep_data(char *argv)
 {
 	int		i;
-	char **tak;
+	char	**tak;
+	char **aux;
 	long num;
 
 	tak = ft_split(argv, ' ');
@@ -80,7 +81,9 @@ static void	keep_data(char *argv, t_stack **a)
 	while (tak[i] != NULL)
 	{
 		num = parseo(tak[i]);
-		*a = init(tak);
+		aux[i] = tak[i]; 
+
+
 		/*if (!((ft_atoi(tak[i]) >= '0' && ft_atoi(tak[i]) <= '9') || 
 				(ft_atoi(tak[i]) == '-' && (ft_atoi(tak[i + 1]) <= '9' && ft_atoi(tak[i + 1]) >= '0')) || 
 				(ft_atoi(tak[i]) == '+' && (ft_atoi(tak[i + 1]) <= '9' && ft_atoi(tak[i + 1]) >= '0'))))
@@ -89,10 +92,9 @@ static void	keep_data(char *argv, t_stack **a)
 			printf("asadsad\n");
 			exit(0);
 		}*/
-		free(tak[i]);
 		i++;
 	}
-	free(tak);
+	return (aux);
 }
 
 void	ft_error(char ***a)
@@ -106,29 +108,27 @@ int		main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	//char	*tak;
-	int		p;
-	//int		si = 0;
-	int		i = 1;
+	//int	p;
+	char ***aux;
+	int		si = 0;
+	int		i = 2;
+	int		j = 1;
 
+	a = NULL;
+	b = NULL;
 	if (argc <= 1)
 		return (0);
 	else
 	{
-		a = NULL;
-		b = NULL;
-	//	tak = NULL;
 		printf("lool");
-		while(i < argc)
+		while(i++ < argc)
 		{
-			keep_data(argv[i], &a);
-
-			i++;
+			aux[si++] = keep_data(argv[j]);
+			j++;
 		}
-		//si = ft_strlen(tak);
 
-		//a = init(&a);
-		//free(tak);
+		//si = ft_strlen(tak);
+/*
 		p = 0; 
 		//	is_sorted(a, si);
 		if (p == 1)
@@ -146,6 +146,7 @@ int		main(int argc, char **argv)
 		//	if (small sort)
 		//	radixmin
 		}
+		*/
 	}
 	return (0);
 }

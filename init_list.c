@@ -6,13 +6,13 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 14:29:00 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/02 21:13:34 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/03 18:48:03 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void other_nodes(char **da, t_stack *first, t_stack *last, t_stack *node)
+static void other_nodes(char ***da, t_stack **first, t_stack **last, t_stack **node)
 {
 	t_stack	*node_next;
 	int		i;
@@ -21,17 +21,17 @@ static void other_nodes(char **da, t_stack *first, t_stack *last, t_stack *node)
 	while (da[i] != NULL)
 	{
 		node_next = malloc(sizeof(t_stack));
-		node_next->num = ft_atoi(da[i]);
-		node_next->next = first;
-		node->next = node_next;
-		last = node;
-		node = node->next;
-		node->pre = last;
+		node_next->num = ft_atoi((char *)da[i]);
+		node_next->next = *first;
+		(*node)->next = node_next;
+		*last = *node;
+		(*node) = (*node)->next;
+		(*node)->pre = *last;
 		i++;
 	}
 }
 
-t_stack *init(char **da)
+t_stack *init(char ***da)
 {
 	t_stack	*last;
 	t_stack	*first;
@@ -42,35 +42,35 @@ t_stack *init(char **da)
 	node = malloc(sizeof(t_stack));
 	if (!node)
 		return NULL;
-	node->num = ft_atoi(da[1]);
+	node->num = ft_atoi((char *)da[1]);
 	node->pre = node;
 	node->next = node;
 	first = node;
-	other_nodes(da, first, last, node);
+	other_nodes(da, &first, &last, &node);
 	last = node;
 	node = node->next;
 	node->pre = last;
 	return (node);
 }
 
-void positive_sort(t_stack *a, t_stack *b, t_save *save, int num)
+void positive_sort(t_stack **a, t_stack **b, t_save *save, int num)
 {
 	int j;
 
 	j = 1;
 	while (j++ <= num)
 	{
-		if ((a->num >> save->i) & 1)
+		if (((*a)->num >> save->i) & 1)
 		{
-			push_to_other_list(a, b);
-			r_act(b);
-			write(1, "pb rb", 6);
+			push_to_other_list(*a, *b);
+			r_act(*b);
+			write(1, "pb rb ", 6);
 			save->j++;
 		}
 		else
 		{
-			r_act(a);
-			write(1, "ra", 3);
+			r_act(*a);
+			write(1, "ra ", 3);
 		}
 	}
 	j = 0;
@@ -78,30 +78,32 @@ void positive_sort(t_stack *a, t_stack *b, t_save *save, int num)
 	{
 		while (j < save->j)
 		{
-			push_to_other_list(b, a);
-			write(1, "pa", 3);
+			push_to_other_list(*b, *a);
+			write(1, "pa ", 3);
+			r_act(*a);
+			write(1, "ra ", 3);
 			j++;
 		}
 	}
 }
 
-void negative_sort(t_stack *a, t_stack *b, t_save *save, int num)
+void negative_sort(t_stack **a, t_stack **b, t_save *save, int num)
 {
 	int j;
 
 	j = 1;
 	while (j++ <= num)
 	{
-		if ((a->num >> 31) & 1)
+		if (((*a)->num >> 31) & 1)
 		{
-			push_to_other_list(a, b);
-			write(1, "pb", 3);
+			push_to_other_list(*a, *b);
+			write(1, "pb ", 3);
 			save->j++;
 		}
 		else
 		{
-			r_act(a);
-			write(1, "ra", 3);
+			r_act(*a);
+			write(1, "ra ", 3);
 		}
 	}
 	j = 0;
@@ -109,8 +111,8 @@ void negative_sort(t_stack *a, t_stack *b, t_save *save, int num)
 	{
 		while (j < save->j)
 		{
-			push_to_other_list(b, a);
-			write(1, "pa", 3);
+			push_to_other_list(*b, *a);
+			write(1, "pa ", 3);
 			j++;
 		}
 	}
@@ -118,16 +120,16 @@ void negative_sort(t_stack *a, t_stack *b, t_save *save, int num)
 
 void radix_sort(t_stack *a, t_stack *b, int num)
 {
-	t_save *save;
+	t_save save;
 
-	save = NULL;
-	save->i = 0;
-	while (save->i++ << 31)
+	save.i = 0;
+	while (save.i << 31)
 	{
-		save->j = 0;
-		positive_sort(a, b, save, num);
+		save.j = 0;
+		positive_sort(&a, &b, &save, num);
+		save.i++;
 	}
-	save->j = 0;
-	negative_sort(a, b, save, num);
+	save.j = 0;
+	negative_sort(&a, &b, &save, num);
 	write(1, "rb\n", 3);
 }
