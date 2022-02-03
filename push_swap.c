@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/03 18:47:59 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/03 21:26:54 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,35 +50,88 @@ static	void	ft_add_back(t_stack **lst, t_stack *new)
 	}
 }
 */
+/*
+static void		ft_lstclear(t_stack **lst, void (*del)(void *))
+{
+	t_stack	*tur;
+	
+	if (lst)
+	{
+		while (*lst)
+		{
+			tur = (*lst)->next;
+			ft_lstdelone(*lst, del);
+			*lst = tur;
+		}
+	}
+}
 
+void	error(t_stack **a)
+{
+	write(1, "Error\n", 6);
+	ft_lstclear(a, free);
+
+}
+*/
 static int parseo(char *argv)
 {
 	long num = 0;
 
+/*
+		if (!((ft_atoi(tak[i]) >= '0' && ft_atoi(tak[i]) <= '9') || 
+				(ft_atoi(tak[i]) == '-' && (ft_atoi(tak[i + 1]) <= '9' && ft_atoi(tak[i + 1]) >= '0')) || 
+				(ft_attak[i]) == '+' && (ft_atoi(tak[i + 1]) <= '9' && ft_atoi(tak[i + 1]) >= '0'))))
+		{
+			//ft_error(tak);
+			printf("asadsad\n");
+			exit(0);*/
+
+	while (argv)
+	{
+		
+		if (!((ft_atoi(argv) >= '0' && ft_atoi(argv) <= '9') || 
+				(ft_atoi(argv) == '-' && (ft_atoi(argv + 1) <= '9' && ft_atoi(argv + 1) >= '0')) || 
+				(ft_atoi(argv) == '+' && (ft_atoi(argv + 1) <= '9' && ft_atoi(argv + 1) >= '0'))))
+		{
+			//ft_error(tak);
+			printf("asadsad\n");
+			exit  (0);
+		}
+			/*
+	}
 	if(!ft_atoi(argv) && argv[0] != '0')
 	{
 		if((argv[0] == '+' || argv[0] == '-') && argv[1] == '0')
 			num = ft_atoi(argv);
 		else
+		{
 			write(1, "Error\n", 6);
+			free(argv);
+			exit(0);
+		}
 	}
 	else
 		num = ft_atoi(argv);
 	if (num > 2147483647 || num < -2147483648)
+	{
 		write (1, "Error", 6);
+		free(argv);
+		exit (0);
+		*/
+	}
 	return (num);
 }
-static char		**keep_data(char *argv)
+static char		*keep_data(char *argv)
 {
 	int		i;
 	char	**tak;
 	char **aux;
 	long num;
 
+	aux = NULL;
 	tak = ft_split(argv, ' ');
 	i = 0;
-	printf("hola");
-	while (tak[i] != NULL)
+	while (tak[i++] != '\0')
 	{
 		num = parseo(tak[i]);
 		aux[i] = tak[i]; 
@@ -92,16 +145,8 @@ static char		**keep_data(char *argv)
 			printf("asadsad\n");
 			exit(0);
 		}*/
-		i++;
 	}
-	return (aux);
-}
-
-void	ft_error(char ***a)
-{
-	write(1, "Error\n", 6);
-	free(a);
-	exit (0);
+	return ((char *)aux);
 }
 
 int		main(int argc, char **argv)
@@ -109,25 +154,23 @@ int		main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 	//int	p;
-	char ***aux;
+	char **aux;
 	int		si = 0;
 	int		i = 2;
 	int		j = 1;
 
 	a = NULL;
 	b = NULL;
+	aux = NULL;
 	if (argc <= 1)
 		return (0);
 	else
 	{
-		printf("lool");
 		while(i++ < argc)
-		{
-			aux[si++] = keep_data(argv[j]);
-			j++;
-		}
-
+			aux[si++] = keep_data(argv[j++]);
+		a = init(&aux);
 		//si = ft_strlen(tak);
+
 /*
 		p = 0; 
 		//	is_sorted(a, si);
