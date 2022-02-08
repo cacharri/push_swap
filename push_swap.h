@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:48:24 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/03 18:48:01 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/08 21:12:20 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ void	radix_sort(t_stack *a, t_stack *b, int num);
 void	ft_error(char ***a);
 
 
-t_stack		*init(char ***da);
+t_stack		*init(char **da);
 
 #endif

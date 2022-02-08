@@ -6,13 +6,13 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 14:29:00 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/03 18:48:03 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/08 21:12:30 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void other_nodes(char ***da, t_stack **first, t_stack **last, t_stack **node)
+static void other_nodes(char **da, t_stack **first, t_stack **last, t_stack **node)
 {
 	t_stack	*node_next;
 	int		i;
@@ -21,7 +21,7 @@ static void other_nodes(char ***da, t_stack **first, t_stack **last, t_stack **n
 	while (da[i] != NULL)
 	{
 		node_next = malloc(sizeof(t_stack));
-		node_next->num = ft_atoi((char *)da[i]);
+		node_next->num = ft_atoi(da[i]);
 		node_next->next = *first;
 		(*node)->next = node_next;
 		*last = *node;
@@ -31,7 +31,7 @@ static void other_nodes(char ***da, t_stack **first, t_stack **last, t_stack **n
 	}
 }
 
-t_stack *init(char ***da)
+t_stack *init(char **da)
 {
 	t_stack	*last;
 	t_stack	*first;
@@ -42,7 +42,7 @@ t_stack *init(char ***da)
 	node = malloc(sizeof(t_stack));
 	if (!node)
 		return NULL;
-	node->num = ft_atoi((char *)da[1]);
+	node->num = ft_atoi(da[1]);
 	node->pre = node;
 	node->next = node;
 	first = node;

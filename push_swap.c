@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/03 21:26:54 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/08 22:05:22 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,80 +73,48 @@ void	error(t_stack **a)
 
 }
 */
-static int parseo(char *argv)
+
+static void parseo(char **argv)
 {
-	long num = 0;
+	int i;
+	int j;
 
-/*
-		if (!((ft_atoi(tak[i]) >= '0' && ft_atoi(tak[i]) <= '9') || 
-				(ft_atoi(tak[i]) == '-' && (ft_atoi(tak[i + 1]) <= '9' && ft_atoi(tak[i + 1]) >= '0')) || 
-				(ft_attak[i]) == '+' && (ft_atoi(tak[i + 1]) <= '9' && ft_atoi(tak[i + 1]) >= '0'))))
+	i = 0;
+	while (argv[i])
+	{
+		j = 0;
+		while(argv[i][j])
 		{
-			//ft_error(tak);
-			printf("asadsad\n");
-			exit(0);*/
+			if ((argv[i][j] == '-' && ft_isdigit(argv[i][j + 1])) || 
+					(argv[i][j] == '+' && ft_isdigit(argv[i][j])))
+				j++;
+			else if (!ft_isdigit(argv[i][j]))
+			{
 
-	while (argv)
-	{
-		
-		if (!((ft_atoi(argv) >= '0' && ft_atoi(argv) <= '9') || 
-				(ft_atoi(argv) == '-' && (ft_atoi(argv + 1) <= '9' && ft_atoi(argv + 1) >= '0')) || 
-				(ft_atoi(argv) == '+' && (ft_atoi(argv + 1) <= '9' && ft_atoi(argv + 1) >= '0'))))
-		{
 			//ft_error(tak);
-			printf("asadsad\n");
-			exit  (0);
+				write(1, "Error\n", 6);
+				//printf("asqwwqqw%s\n", argv[i]);
+				exit (0);
+			}
+			j++;
 		}
-			/*
+		i++;
 	}
-	if(!ft_atoi(argv) && argv[0] != '0')
-	{
-		if((argv[0] == '+' || argv[0] == '-') && argv[1] == '0')
-			num = ft_atoi(argv);
-		else
-		{
-			write(1, "Error\n", 6);
-			free(argv);
-			exit(0);
-		}
-	}
-	else
-		num = ft_atoi(argv);
+		/*	
 	if (num > 2147483647 || num < -2147483648)
 	{
 		write (1, "Error", 6);
 		free(argv);
 		exit (0);
 		*/
-	}
-	return (num);
 }
-static char		*keep_data(char *argv)
+static void		keep_data(char *argv)
 {
-	int		i;
 	char	**tak;
-	char **aux;
-	long num;
 
-	aux = NULL;
 	tak = ft_split(argv, ' ');
-	i = 0;
-	while (tak[i++] != '\0')
-	{
-		num = parseo(tak[i]);
-		aux[i] = tak[i]; 
-
-
-		/*if (!((ft_atoi(tak[i]) >= '0' && ft_atoi(tak[i]) <= '9') || 
-				(ft_atoi(tak[i]) == '-' && (ft_atoi(tak[i + 1]) <= '9' && ft_atoi(tak[i + 1]) >= '0')) || 
-				(ft_atoi(tak[i]) == '+' && (ft_atoi(tak[i + 1]) <= '9' && ft_atoi(tak[i + 1]) >= '0'))))
-		{
-			//ft_error(tak);
-			printf("asadsad\n");
-			exit(0);
-		}*/
-	}
-	return ((char *)aux);
+		printf("hello%s\n", tak[0]);
+	parseo(tak);
 }
 
 int		main(int argc, char **argv)
@@ -154,31 +122,28 @@ int		main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 	//int	p;
-	char **aux;
-	int		si = 0;
 	int		i = 2;
 	int		j = 1;
 
 	a = NULL;
 	b = NULL;
-	aux = NULL;
 	if (argc <= 1)
 		return (0);
 	else
 	{
-		while(i++ < argc)
-			aux[si++] = keep_data(argv[j++]);
-		a = init(&aux);
+		while(i++ <= argc) //tengo que mirar el numero de numeros que hay en la lista, y guardarlo
+			keep_data(argv[j++]);
+		//a = init(&aux);
+		//printf("%d\n", argc);
 		//si = ft_strlen(tak);
 
 /*
-		p = 0; 
-		//	is_sorted(a, si);
+		p = is_sorted(a, 105);
 		if (p == 1)
 			exit (0);
 		else if (p == 0)
 		{
-			if (argc > 100)
+			if (argc > 5)
 			{
 				radix_sort(a, b, a->num);
 			}
@@ -188,8 +153,7 @@ int		main(int argc, char **argv)
 		//	radix sort
 		//	if (small sort)
 		//	radixmin
-		}
-		*/
+		}*/
 	}
 	return (0);
 }
