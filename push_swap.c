@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/09 19:57:39 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/09 21:01:48 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,23 @@ void	error(t_stack **a)
 static char **keep(char **argv, int argc)
 {
 	char **aux;
+	//char **auxa;
+	//int o = 0;
 	int i;
 	int j;
 
 	j = 1;
 	i = 2;
 	aux = NULL;
+	//auxa = NULL;
 	while (i++ <= argc)
 	{
 		aux = ft_split(argv[j], ' ');
 		j++;
 	}
+	//aux[o++] = *aux;
+	printf("esto vjnoninc---> %s\n", aux[0]);
+	printf("esto wdcccees---> %s\n", aux[1]);
 	return (aux);
 }
 
@@ -101,7 +107,7 @@ static void parseo(char **argv)
 	while (argv[i])
 	{
 		j = 0;
-		printf("parse%s\n\n", argv[i]);
+	//	printf("parse%s\n\n", argv[i]);
 		while(argv[i][j])
 		{
 			if ((argv[i][j] == '-' && ft_isdigit(argv[i][j + 1])) || 
@@ -128,9 +134,9 @@ static void		look_data(char *argv)
 	char	**tak;
 
 	tak = ft_split(argv, ' ');
-		printf("hello%s\n", tak[0]);
+	//	printf("hello%s\n", tak[0]);
 	parseo(tak);
-	printf("lola%s\n", tak[0]);
+	//printf("lola%s\n", tak[0]);
 }
 
 int		main(int argc, char **argv)
@@ -153,8 +159,6 @@ int		main(int argc, char **argv)
 		while(i++ <= argc)
 			look_data(argv[j++]);
 		aux = keep(argv, argc);
-		printf("keepp---> %s\n", aux[0]);
-		printf("keepp---> %s\n", aux[1]);
 		//printf("keepp---> %s\n", aux[2]);
 	//	printf("keepp---> %s\n", aux[3]);
 	//	printf("keepp---> %s\n", aux[4]);

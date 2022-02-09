@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 14:29:00 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/08 21:12:30 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/09 21:01:50 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,15 @@ static void other_nodes(char **da, t_stack **first, t_stack **last, t_stack **no
 	}
 }
 
-t_stack *init(char **da)
+t_stack *init(char **da, t_stack **mylist)
 {
 	t_stack	*last;
 	t_stack	*first;
 	t_stack	*node;
 
+
+	if (mylist == NULL)
+		//proceso de crear una nueva lista
 	last = NULL;
 	first = NULL;
 	node = malloc(sizeof(t_stack));
