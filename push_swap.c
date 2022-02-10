@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/09 21:01:48 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/10 21:36:23 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,41 +73,58 @@ void	error(t_stack **a)
 
 }
 */
+/*
 static char **keep(char **argv, int argc)
 {
 	char **aux;
-	//char **auxa;
-	//int o = 0;
+	char **auxa;
+	int o = 0;
 	int i;
-	int j;
+	//int j;
 
-	j = 1;
+	//j = 1;
 	i = 2;
 	aux = NULL;
-	//auxa = NULL;
+	auxa = NULL;
+	auxa[0] = ft_strdup(argv[1]);
+	while(i < argc)
+	{
+		o = 1;
+		aux = auxa;
+		auxa[o] = ft_strjoin(auxa[o], " ");
+		free(auxa);
+		auxa[o] = *aux;
+		auxa[o] = ft_strjoin(auxa[o], argv[i]);
+		free(aux);
+		i++;
+		o++;
+	}
+	
 	while (i++ <= argc)
 	{
 		aux = ft_split(argv[j], ' ');
+		auxa = ft_strjoin()
 		j++;
 	}
 	//aux[o++] = *aux;
-	printf("esto vjnoninc---> %s\n", aux[0]);
-	printf("esto wdcccees---> %s\n", aux[1]);
-	return (aux);
+	
+	return (auxa);
 }
-
+*/
 static void parseo(char **argv)
 {
 	int i;
 	int j;
 	long n;
-
+	int k;
 	i = 0;
 	n = 0;
 	while (argv[i])
 	{
 		j = 0;
-	//	printf("parse%s\n\n", argv[i]);
+		k = 0;
+		//printf("parse%s\n\n", argv[i]);
+		//printf("parsero--->%d\n", i);
 		while(argv[i][j])
 		{
 			if ((argv[i][j] == '-' && ft_isdigit(argv[i][j + 1])) || 
@@ -134,7 +151,6 @@ static void		look_data(char *argv)
 	char	**tak;
 
 	tak = ft_split(argv, ' ');
-	//	printf("hello%s\n", tak[0]);
 	parseo(tak);
 	//printf("lola%s\n", tak[0]);
 }
@@ -144,7 +160,7 @@ int		main(int argc, char **argv)
 	t_stack	*a;
 	t_stack	*b;
 	char **aux;
-	//int	p;
+	int	p;
 //	int		o = 0;
 	int		i = 2;
 	int		j = 1;
@@ -158,16 +174,14 @@ int		main(int argc, char **argv)
 	{
 		while(i++ <= argc)
 			look_data(argv[j++]);
-		aux = keep(argv, argc);
-		//printf("keepp---> %s\n", aux[2]);
+		//printf("sdc-->%d", argc);
+		a = init(argv + 1);
 	//	printf("keepp---> %s\n", aux[3]);
 	//	printf("keepp---> %s\n", aux[4]);
 		
 		//a = init(&aux);
 		//printf("%d\n", argc);
 		//si = ft_strlen(tak);
-
-/*
 		p = is_sorted(a, 105);
 		if (p == 1)
 			exit (0);
@@ -175,7 +189,8 @@ int		main(int argc, char **argv)
 		{
 			if (argc > 5)
 			{
-				radix_sort(a, b, a->num);
+				printf("goooo");
+				radix_sort(a, b, 105);
 			}
 			else
 				exit (0);
@@ -183,7 +198,7 @@ int		main(int argc, char **argv)
 		//	radix sort
 		//	if (small sort)
 		//	radixmin
-		}*/
+		}
 	}
 	return (0);
 }
