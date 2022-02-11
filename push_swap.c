@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/10 21:36:23 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/11 18:32:35 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,18 @@ static char **keep(char **argv, int argc)
 	return (auxa);
 }
 */
+static t_list	*ft_add_number(int content)
+{
+	t_list *ay;
+
+	ay = malloc(sizeof(int));
+	if (!ay)
+		return (NULL);
+	ay->content = malloc(sizeof(int));
+	ay->next = NULL;
+	*(int *)ay->content = content;
+	return (ay);
+}
 static void parseo(char **argv)
 {
 	int i;
@@ -157,32 +169,38 @@ static void		look_data(char *argv)
 
 int		main(int argc, char **argv)
 {
-	t_stack	*a;
-	t_stack	*b;
-	char **aux;
-	int	p;
+//	t_stack	*a;
+//	t_stack	*b;
+	t_list	*a;
+	t_list	*b;
+//	char **aux;
+//	int	p;
 //	int		o = 0;
 	int		i = 2;
 	int		j = 1;
 
+//	a = NULL;
+//	b = NULL;
 	a = NULL;
 	b = NULL;
-	aux = NULL;
+//	aux = NULL;
 	if (argc <= 1)
 		return (0);
 	else
 	{
+		if (ft_strlen(argv[1])== 0)
+			return (0);
 		while(i++ <= argc)
 			look_data(argv[j++]);
 		//printf("sdc-->%d", argc);
-		a = init(argv + 1);
+	//	a = init(argv + 1);
 	//	printf("keepp---> %s\n", aux[3]);
 	//	printf("keepp---> %s\n", aux[4]);
 		
 		//a = init(&aux);
 		//printf("%d\n", argc);
 		//si = ft_strlen(tak);
-		p = is_sorted(a, 105);
+	/*	p = is_sorted(a, 105);
 		if (p == 1)
 			exit (0);
 		else if (p == 0)
@@ -198,7 +216,7 @@ int		main(int argc, char **argv)
 		//	radix sort
 		//	if (small sort)
 		//	radixmin
-		}
+		}*/
 	}
 	return (0);
 }
