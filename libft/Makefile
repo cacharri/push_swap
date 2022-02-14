@@ -6,7 +6,7 @@
 #    By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/06 18:00:35 by ialvarez          #+#    #+#              #
-#    Updated: 2021/09/13 17:32:21 by ialvarez         ###   ########.fr        #
+#    Updated: 2022/02/14 19:56:58 by ialvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,8 +33,8 @@ OBJSBN	= ${SRCSBN:.c=.o}
 OBJS	= ${SRCS:.c=.o}
 
 ${NAME}:	${SRCS}
-			${GCC} -c ${CFLAGS} ${SRCS}
-			ar -rcs ${NAME} ${OBJS}
+			${GCC} -c ${CFLAGS} ${SRCS} ${SRCSBN}
+			ar -rcs ${NAME} ${OBJS} ${OBJSBN}
 
 all:		${NAME}
 

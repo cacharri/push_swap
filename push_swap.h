@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:48:24 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/09 19:57:37 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/14 20:14:15 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ typedef struct s_save
 void	push_to_other_list(t_stack *from, t_stack *to);		//pa
 void	r_act(t_stack *list);								//ra
 void	rr_act(t_stack *list);								//rra
-int		is_sorted(t_stack *a, int si);
+int		is_sorted(t_list *a);
 void	positive_sort(t_stack **a, t_stack **b, t_save *save, int num);
 void	negative_sort(t_stack **a, t_stack **b, t_save *save, int num);
 void	radix_sort(t_stack *a, t_stack *b, int num);
-void	ft_error(char ***a);
+void	error(t_list **a);
 
 
 t_stack		*init(char **da);

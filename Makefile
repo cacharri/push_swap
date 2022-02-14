@@ -6,14 +6,14 @@
 #    By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/30 19:34:17 by ialvarez          #+#    #+#              #
-#    Updated: 2022/02/07 18:44:03 by ialvarez         ###   ########.fr        #
+#    Updated: 2022/02/14 20:01:02 by ialvarez         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 NAME = push_swap
 
-SRCS = push_swap.c no_repeat.c delete.c init_list.c sorted.c
+SRCS = push_swap.c delete.c init_list.c sorted.c
 
 OBJECTS = $(SRCS:.c=.o)
 LIBFT_DIR = libft/

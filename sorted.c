@@ -6,30 +6,22 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 18:04:52 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/03 16:23:34 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/14 20:18:56 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int is_sorted(t_stack *a, int si)
+int is_sorted(t_list *a)
 {
-	int i;
-	int p;
+	t_list *aux;
 
-	i = 1;
-	while (i < si)
+	aux = a;
+	while (aux->next != NULL)
 	{
-		if (a->num > a->next->num)
-		{
-			p = 0;
-			break ;
-		}
-		else
-			p = 1;
-		a = a->next;
-		i++;
+		if (*(int *)aux->content > *(int *)aux->next->content)
+			return (-1);
+		aux = aux->next;
 	}
-	a = a->next;
-	return (p);
+	return (0);
 }

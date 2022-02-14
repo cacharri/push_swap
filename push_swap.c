@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/11 18:32:35 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/14 20:20:03 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,14 +65,14 @@ static void		ft_lstclear(t_stack **lst, void (*del)(void *))
 		}
 	}
 }
-
-void	error(t_stack **a)
+*/
+void	error(t_list **a)
 {
 	write(1, "Error\n", 6);
 	ft_lstclear(a, free);
 
 }
-*/
+
 /*
 static char **keep(char **argv, int argc)
 {
@@ -128,15 +128,10 @@ static void parseo(char **argv)
 	int i;
 	int j;
 	long n;
-	int k;
 	i = 0;
-	n = 0;
 	while (argv[i])
 	{
 		j = 0;
-		k = 0;
-		//printf("parse%s\n\n", argv[i]);
-		//printf("parsero--->%d\n", i);
 		while(argv[i][j])
 		{
 			if ((argv[i][j] == '-' && ft_isdigit(argv[i][j + 1])) || 
@@ -164,26 +159,53 @@ static void		look_data(char *argv)
 
 	tak = ft_split(argv, ' ');
 	parseo(tak);
+	free(tak);
 	//printf("lola%s\n", tak[0]);
+}
+
+static int	no_repeat(t_list *a)
+{
+	t_list	*aux;
+	t_list	*last;
+
+	aux = a;
+	last = ft_lstlast(a);
+	while (aux->next != NULL)
+	{
+		if (*(int *)aux->content == *(int *)last->content)
+			return (-1);
+		aux = aux->next;
+	}
+	return (0);
+}
+static t_list *keep_data(char *argv, t_list *a)
+{
+	while(*argv != '\0')
+	{
+		ft_lstadd_back(&a, ft_add_number(ft_atoi(argv)));
+		if (no_repeat(a) == -1)
+			return (0);
+		while (ft_isdigit(*argv) || (*argv != ' ' && *argv != '\0') 
+				|| ((*argv == '-' && ft_isdigit(*argv + 1)) && (*argv == '+' 
+				&& ft_isdigit(*argv + 1))))
+			argv++;
+		if (*argv == ' ')
+			argv++;
+	}
+	return(a);
 }
 
 int		main(int argc, char **argv)
 {
-//	t_stack	*a;
-//	t_stack	*b;
 	t_list	*a;
 	t_list	*b;
-//	char **aux;
 //	int	p;
 //	int		o = 0;
 	int		i = 2;
 	int		j = 1;
 
-//	a = NULL;
-//	b = NULL;
 	a = NULL;
 	b = NULL;
-//	aux = NULL;
 	if (argc <= 1)
 		return (0);
 	else
@@ -192,13 +214,17 @@ int		main(int argc, char **argv)
 			return (0);
 		while(i++ <= argc)
 			look_data(argv[j++]);
-		//printf("sdc-->%d", argc);
-	//	a = init(argv + 1);
-	//	printf("keepp---> %s\n", aux[3]);
-	//	printf("keepp---> %s\n", aux[4]);
-		
-		//a = init(&aux);
-		//printf("%d\n", argc);
+		i = 2;
+		while(i++ <= argc && argv++)
+			a = keep_data(*argv, a);
+		if (is_sorted(a) == 0)
+			return (0);
+
+		while (a != NULL)
+		{
+			printf("%d\n", *(int *)a->content);
+			a = a->next;
+		}
 		//si = ft_strlen(tak);
 	/*	p = is_sorted(a, 105);
 		if (p == 1)
