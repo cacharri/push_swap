@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/15 20:16:00 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/15 21:57:55 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,19 +131,19 @@ int		main(int argc, char **argv)
 		while(i++ <= argc && argv++)
 			a = keep_data(*argv, a);
 		if (is_sorted(a) == 0)
-			return (0);/*
-		while (a != NULL)
-		{
-			printf("%d\n", *(int *)a->content);
-			a = a->next;
-		}*/
+			return (0);
 		if (ft_lstsize(a) == 3)
 			small(&a, &b);
 		if (ft_lstsize(a) == 2)
 			small_two(&a, &b);
 		if (ft_lstsize(a) <= 5 && ft_lstsize(a) > 3)
 			small_five(&a, &b);
+		while (a != NULL)
+		{
+			printf("%d\n", *(int *)a->content);
+			a = a->next;
+		}
 	}
-	system("leaks push_swap");
+	//system("leaks push_swap");
 	return (0);
 }

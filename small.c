@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:10:08 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/15 20:16:05 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/15 21:57:53 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,35 @@ void	small(t_list **a, t_list **b)
 
 void	small_five(t_list **a, t_list **b)
 {
-	t_list *aux;
-
-	aux = *a;
-
+	push_to(a, b, 'b');
+	push_to(a, b, 'b');
+	small(a, b);
+	push_to(a, b, 'a');
+	if (*(int *)(*a)->content > *(int*)(*a)->next->content)
+		r_action(a, b, 'a');
+	push_to(a, b, 'a');
+	if (*(int *)(*a)->content > *(int *)(*a)->next->content)
+		small_five(a, b);
+	/*
+	if(is_sorted(*a) == 0)
+		push_to(a, b, 'a');
+	else
+	{
+		r_action(a, b, 'a');
+		if(is_sorted(*a) == 0)
+			push_to(a, b, 'a');
+		else
+		{
+			r_action(a, b, 'a');
+			push_to(a, b, 'a');
+		}
+	}
+	if(is_sorted(*a) == 0)
+		return ;
+	else
+	{
+		r_action(a, b, 'a');
+		if (!(is_sorted(*a) == 0))
+			r_action(a, b, 'a');
+	}*/
 }
