@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:48:24 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/14 20:14:15 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/15 20:14:07 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,30 +17,18 @@
 # include	<stdlib.h>
 # include	"libft/libft.h"
 
-
-typedef struct s_stack
-{
-	int num;
-	struct s_stack *next;
-	struct s_stack *pre;
-}					t_stack;
-
-typedef struct s_save
-{
-	int i;
-	int j;
-}					t_save;
-
-void	push_to_other_list(t_stack *from, t_stack *to);		//pa
-void	r_act(t_stack *list);								//ra
-void	rr_act(t_stack *list);								//rra
+void	push_to(t_list **a, t_list **b, char how);
+void	swap(t_list **a, t_list **b, char how);
+void	rotate(t_list **a);
+void	r_action(t_list **a, t_list **b, char how);
+void	rr_action(t_list **a, t_list **b, char how);
 int		is_sorted(t_list *a);
-void	positive_sort(t_stack **a, t_stack **b, t_save *save, int num);
-void	negative_sort(t_stack **a, t_stack **b, t_save *save, int num);
-void	radix_sort(t_stack *a, t_stack *b, int num);
 void	error(t_list **a);
+void	small(t_list **a, t_list **b);
+void	small_two(t_list **a, t_list **b);
+void	small_five(t_list **a, t_list **b);
 
 
-t_stack		*init(char **da);
+t_list	*ft_add_number(int content);
 
 #endif
