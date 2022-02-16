@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/15 21:57:55 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/16 19:03:39 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,7 @@ void	error(t_list **a)
 	ft_lstclear(a, free);
 
 }
-/*
-static t_list	*ft_add_number(int content)
-{
-	t_list *ay;
 
-	ay = malloc(sizeof(int));
-	if (!ay)
-		return (NULL);
-	ay->content = malloc(sizeof(int));
-	ay->next = NULL;
-	*(int *)ay->content = content;
-	return (ay);
-}*/
 static void parseo(char **argv)
 {
 	int i;
@@ -137,12 +125,12 @@ int		main(int argc, char **argv)
 		if (ft_lstsize(a) == 2)
 			small_two(&a, &b);
 		if (ft_lstsize(a) <= 5 && ft_lstsize(a) > 3)
-			small_five(&a, &b);
+			small_five(&a, &b);/*
 		while (a != NULL)
 		{
 			printf("%d\n", *(int *)a->content);
 			a = a->next;
-		}
+		}*/
 	}
 	//system("leaks push_swap");
 	return (0);
