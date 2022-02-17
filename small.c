@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:10:08 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/16 19:11:35 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/16 20:54:48 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,7 +148,6 @@ static int special_k(t_list **a, t_list **b)
 		return (1);
 	}
 	return (0);
-
 }
 
 void	small_five(t_list **a, t_list **b)
