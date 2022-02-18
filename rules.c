@@ -6,15 +6,15 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 14:11:59 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/16 20:46:39 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/18 19:50:25 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push_to(t_list **a, t_list **b, char how)
+void	push_to(t_list **a, t_list **b, char how)
 {
-	t_list *aux;
+	t_list	*aux;
 
 	if (how == 'a' && ft_lstsize(*b) > 0)
 	{
@@ -36,7 +36,7 @@ void push_to(t_list **a, t_list **b, char how)
 	}
 }
 
-void swap(t_list **a, t_list **b, char how)
+void	swap(t_list **a, t_list **b, char how)
 {
 	void	*aux;
 
@@ -60,9 +60,9 @@ void swap(t_list **a, t_list **b, char how)
 		write (1, "ss\n", 3);
 }
 
-void rotate(t_list **a)
+void	rotate(t_list **a)
 {
-	t_list *aux;
+	t_list	*aux;
 
 	aux = (*a);
 	while (aux->next->next != NULL)
@@ -73,9 +73,9 @@ void rotate(t_list **a)
 	aux->next = NULL;
 }
 
-void r_action(t_list **a, t_list **b, char how)
+void	r_action(t_list **a, t_list **b, char how)
 {
-	t_list *aux;
+	t_list	*aux;
 
 	if ((how == 'a' || how == 'r') && ft_lstsize(*a) > 1)
 	{
@@ -101,7 +101,7 @@ void r_action(t_list **a, t_list **b, char how)
 		write (1, "rr\n", 3);
 }
 
-void rr_action(t_list **a, t_list **b, char how)
+void	rr_action(t_list **a, t_list **b, char how)
 {
 	if ((how == 'a' || how == 'r') && ft_lstsize(*a) > 1)
 	{
@@ -116,5 +116,3 @@ void rr_action(t_list **a, t_list **b, char how)
 			write (1, "rrb\n", 1);
 	}
 }
-
-

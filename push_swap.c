@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/18 19:43:42 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/18 20:06:28 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,22 @@ void	error(t_list **a)
 {
 	write(1, "Error\n", 6);
 	ft_lstclear(a, free);
-
 }
 
-static void parseo(char **argv)
+static void	parseo(char **argv)
 {
-	int i;
-	int j;
-	long n;
+	int		i;
+	int		j;
+	long	n;
+
 	i = 0;
 	while (argv[i])
 	{
 		j = 0;
-		while(argv[i][j])
+		while (argv[i][j])
 		{
-			if ((argv[i][j] == '-' && ft_isdigit(argv[i][j + 1])) || 
-					(argv[i][j] == '+' && ft_isdigit(argv[i][j + 1])))
+			if ((argv[i][j] == '-' && ft_isdigit(argv[i][j + 1])) 
+				|| (argv[i][j] == '+' && ft_isdigit(argv[i][j + 1])))
 				j++;
 			else if (!ft_isdigit(argv[i][j]))
 			{
@@ -130,12 +130,12 @@ int		main(int argc, char **argv)
 		{
 			simple(&a);
 			big_hundred(&a, &b);
-		}/*
+		}
 		while (a != NULL)
 		{
 			printf("%d\n", *(int *)a->content);
 			a = a->next;
-		}*/
+		}
 	}
 	//system("leaks push_swap");
 	return (0);

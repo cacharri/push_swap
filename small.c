@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 17:10:08 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/16 20:54:48 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/18 19:49:24 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	small_two(t_list **a, t_list **b)
 	if (i > j)
 		swap(a, b, 'a');
 }
+
 void	small(t_list **a, t_list **b)
 {
 	int		i;
@@ -53,7 +54,7 @@ void	small(t_list **a, t_list **b)
 	}
 }
 
-static	void find_small(t_list **a, t_list **b)
+static	void	find_small(t_list **a, t_list **b)
 {
 	int	i;
 	int	j;
@@ -85,7 +86,7 @@ static	void find_small(t_list **a, t_list **b)
 		push_to(a, b, 'a');
 }
 
-static	void find_fifth(t_list **a, t_list **b)
+static	void	find_fifth(t_list **a, t_list **b)
 {
 	int	i;
 	int	j;
@@ -127,7 +128,7 @@ static	void find_fifth(t_list **a, t_list **b)
 	}
 }
 
-static int special_k(t_list **a, t_list **b)
+static int	special_k(t_list **a, t_list **b)
 {
 	int	i;
 	int	j;

@@ -6,15 +6,15 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 18:04:52 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/18 17:42:39 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/18 19:48:21 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int is_sorted(t_list *a)
+int	is_sorted(t_list *a)
 {
-	t_list *aux;
+	t_list	*aux;
 
 	aux = a;
 	while (aux->next != NULL)
@@ -26,9 +26,9 @@ int is_sorted(t_list *a)
 	return (0);
 }
 
-t_list *ft_add_number(int content)
+t_list	*ft_add_number(int content)
 {
-	t_list *ay;
+	t_list	*ay;
 
 	ay = malloc(sizeof(int));
 	if (!ay)

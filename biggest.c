@@ -6,17 +6,17 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 16:37:39 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/18 19:43:44 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/18 19:55:40 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int *order(int *save, int size)
+static int	*order(int *save, int size)
 {
-	int i;
-	int j;
-	int aux;
+	int	i;
+	int	j;
+	int	aux;
 
 	i = -1;
 	while (++i < size)
@@ -36,7 +36,7 @@ static int *order(int *save, int size)
 	return (save);
 }
 
-static	t_list **re_do(t_list **a, int *before, int *save, int size)
+static t_list	**re_do(t_list **a, int *before, int *save, int size)
 {
 	int	i;
 	int	j;
@@ -63,7 +63,7 @@ static	t_list **re_do(t_list **a, int *before, int *save, int size)
 	return (a);
 }
 
-void simple(t_list **a)
+void	simple(t_list **a)
 {
 	t_list	*aux;
 	int		*save;
@@ -95,9 +95,8 @@ void	big_hundred(t_list **a, t_list **b)
 {
 	int	i;
 	int	j;
-	int k;
 	int	by;
-	int size;
+	int	size;
 
 	by = 0;
 	size = ft_lstsize(*a);
@@ -111,13 +110,11 @@ void	big_hundred(t_list **a, t_list **b)
 		{
 			if (is_sorted(*a) == 0)
 				break ;
-			k = *(int *)(*a)->content;
-			if (((k >> i) & 1) == 1)
+			if (((*(int *)(*a)->content >> i) & 1) == 1)
 				r_action(a, b, 'a');
 			else
 				push_to(a, b, 'b');
 		}
-
 		while (*b)
 			push_to(a, b, 'a');
 	}
