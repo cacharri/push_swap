@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:48:24 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/15 20:14:07 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/18 17:54:00 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	error(t_list **a);
 void	small(t_list **a, t_list **b);
 void	small_two(t_list **a, t_list **b);
 void	small_five(t_list **a, t_list **b);
+void	big_hundred(t_list **a, t_list **b);
+void	simple(t_list **a);
 
 
 t_list	*ft_add_number(int content);

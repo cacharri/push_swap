@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/17 15:23:49 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/18 19:43:42 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,17 +120,17 @@ int		main(int argc, char **argv)
 			a = keep_data(*argv, a);
 		if (is_sorted(a) == 0)
 			return (0);
-		if (ft_lstsize(a) == 3)
+		else if (ft_lstsize(a) == 3)
 			small(&a, &b);
-		if (ft_lstsize(a) == 2)
+		else if (ft_lstsize(a) == 2)
 			small_two(&a, &b);
-		if (ft_lstsize(a) <= 5 && ft_lstsize(a) > 3)
+		else if (ft_lstsize(a) <= 5 && ft_lstsize(a) > 3)
 			small_five(&a, &b);
-		if (ft_lstsize > 5 && ft_lstsize <= 100)
+		else
 		{
-
-		}
-		/*
+			simple(&a);
+			big_hundred(&a, &b);
+		}/*
 		while (a != NULL)
 		{
 			printf("%d\n", *(int *)a->content);
