@@ -6,7 +6,7 @@
 /*   By: ialvarez <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 19:47:20 by ialvarez          #+#    #+#             */
-/*   Updated: 2022/02/21 21:35:20 by ialvarez         ###   ########.fr       */
+/*   Updated: 2022/02/22 19:24:37 by ialvarez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,38 +16,27 @@ static void	parseo(char **argv)
 {
 	int		i;
 	int		j;
-	long	n;
+	char	*aux;
 
+	aux = NULL;
 	i = 0;
 	while (argv[i])
 	{
 		j = 0;
-		while (argv[i][j])
-		{
-			if ((argv[i][j] == '-' && ft_isdigit(argv[i][j + 1]))
-					|| (argv[i][j] == '+' && ft_isdigit(argv[i][j + 1])))
-				j++;
-			else if (!ft_isdigit(argv[i][j]))
-			{
-				write(1, "Error\n", 6);
-				exit (0);
-			}
-			j++;
-		}
-		n = ft_atoi(argv[i]);
-		if (n < -2147483648 || n > 2147483647)
-		{
-			write(1, "Error\n", 6);
-			exit (0);
-		}
+		aux_parse(argv, i, j);
 		i++;
+	}
+	if (i == 0)
+	{
+		write(1, "Error\n", 6);
+		exit (0);
 	}
 }
 
 static void	look_data(char *argv)
 {
 	char	**tak;
-	int i;
+	int		i;
 
 	i = 0;
 	tak = ft_split(argv, ' ');
@@ -84,25 +73,25 @@ static t_list	*keep_data(char *argv, t_list *a)
 	while (*argv != '\0')
 	{
 		ft_lstadd_back(&a, ft_add_number(ft_atoi(argv)));
+		while (*argv == ' ')
+			argv++;
 		if (no_repeat(a) == -1)
 		{
-			free(a);
+			ft_lstclear(&a, free);
 			exit (0);
 		}
 		while (ft_isdigit(*argv) || (*argv != ' ' && *argv != '\0')
 			|| ((*argv == '-' && ft_isdigit(*argv + 1)) && (*argv == '+'
 					&& ft_isdigit(*argv + 1))))
 			argv++;
-		if (*argv == ' ')
-			argv++;
 	}
 	return (a);
 }
-
+/*
 void	leaks()
 {
 	system("leaks push_swap");
-}
+}*/
 
 int	main(int argc, char **argv)
 {
@@ -115,42 +104,18 @@ int	main(int argc, char **argv)
 	b = NULL;
 	i = 2;
 	j = 1;
-	//atexit(leaks);
 	if (argc <= 1)
 		return (0);
 	else
 	{
-		if (ft_strlen(argv[1]) == 0)
-			return (0);
+		j = 1;
 		while (i++ <= argc)
 			look_data(argv[j++]);
 		i = 2;
 		while (i++ <= argc && argv++)
 			a = keep_data(*argv, a);
-		if (is_sorted(a) == 0)
-		{
-			free(a);
-			return (0);
-		}
-		else if (ft_lstsize(a) == 2)
-			small_two(&a, &b);
-		else if (ft_lstsize(a) <= 5 && ft_lstsize(a) >= 3)
-			small_five(&a, &b);
-		else
-		{
-			simple(&a);
-			big_hundred(&a, &b);
-		}
-		/*
-		while (a != NULL)
-		{
-			printf("%d\n", *(int *)a->content);
-			a = a->next;
-		}*/
+		push(&a, &b);
 	}
 	ft_lstclear(&a, free);
-	//freeze(&a);
-
-	//system("leaks push_swap");
 	return (0);
 }
